@@ -3,16 +3,16 @@ const form = document.querySelector("#form");
 const fragment = document.createDocumentFragment();
 
 const data = [
-    {nombre: "Martín", appellido: "Gutierrez", marca: "Ford", modelo: "Fiesta", matricula: "2345EXL", multas: 4},
-    {nombre: "Victoria", appellido: "Poblete", marca: "Seat", modelo: "Ibiza", matricula: "1867LWC", multas: 0},
-    {nombre: "Andrea", appellido: "Hevia", marca: "Nissan", modelo: "Note", matricula: "2289TVB", multas: 3},
-    {nombre: "Gabriella", appellido: "Romero", marca: "Kia", modelo: "Picanto", matricula: "1201RVV", multas: 2},
-    {nombre: "Aurelio", appellido: "Pérez", marca: "Toyota", modelo: "Corolla", matricula: "4141FMV", multas: 1},
-    {nombre: "Daniel", appellido: "López", marca: "BMW", modelo: "325i", matricula: "3322TTB", multas: 0},
-    {nombre: "Jorge", appellido: "Martínez", marca: "Renault", modelo: "Megane", matricula: "4876FDE", multas: 0},
-    {nombre: "Claudia", appellido: "Álvarez", marca: "Citröen", modelo: "C3", matricula: "1147DDS", multas: 2},
-    {nombre: "Cristian", appellido: "Muñoz", marca: "Suzuki", modelo: "Swift", matricula: "9098ESW", multas: 4},
-    {nombre: "Elena", appellido: "Gómez", marca: "Subaru", modelo: "Impreza", matricula: "4342GAB", multas: 2},
+    {nombre: "Martín", apellido: "Gutierrez", marca: "Ford", modelo: "Fiesta", matricula: "2345EXL", multas: 4},
+    {nombre: "Victoria", apellido: "Poblete", marca: "Seat", modelo: "Ibiza", matricula: "1867LWC", multas: 0},
+    {nombre: "Andrea", apellido: "Hevia", marca: "Nissan", modelo: "Note", matricula: "2289TVB", multas: 3},
+    {nombre: "Gabriella", apellido: "Romero", marca: "Kia", modelo: "Picanto", matricula: "1201RVV", multas: 2},
+    {nombre: "Aurelio", apellido: "Pérez", marca: "Toyota", modelo: "Corolla", matricula: "4141FMV", multas: 1},
+    {nombre: "Daniel", apellido: "López", marca: "BMW", modelo: "325i", matricula: "3322TTB", multas: 0},
+    {nombre: "Jorge", apellido: "Martínez", marca: "Renault", modelo: "Megane", matricula: "4876FDE", multas: 0},
+    {nombre: "Claudia", apellido: "Álvarez", marca: "Citröen", modelo: "C3", matricula: "1147DDS", multas: 2},
+    {nombre: "Cristian", apellido: "Muñoz", marca: "Suzuki", modelo: "Swift", matricula: "9098ESW", multas: 4},
+    {nombre: "Elena", apellido: "Gómez", marca: "Subaru", modelo: "Impreza", matricula: "4342GAB", multas: 2},
 
 ];
 
@@ -38,29 +38,28 @@ const validarFormulario = () => {
     const matriculaUsuario = document.querySelector("#matricula").value;
     const matriculas = JSON.parse(localStorage.getItem('dataCoches'));
 
-    if(!regExp.test(matriculaUsuario)){
-        alert("Formato Matrícula Inválido: Introducir 4 números seguidos por 3 letras")
-        return;
-    }
-
-    if (!matriculaUsuario) {
-        alert('MATRICULA REQUERIDA')
-        return;
-    }
     
     let existe = false;
     matriculas.forEach((matricula)=>{
+    
       if(matricula.matricula === matriculaUsuario && matricula.multas > 0){
         document.getElementById('bodyTabla').innerHTML += 
         `<tr><td>${matricula.nombre}</td>
+        <td>${matricula.apellido}</td>
+        <td>${matricula.marca}</td>
         <td>${matricula.modelo}</td>
         <td>${matricula.matricula}</td>
         <td>${matricula.multas}</td></tr>`
         document.getElementById('prompt').innerHTML = 'Tiene multas'
       }
+      if (!matriculaUsuario) {
+        document.getElementById('prompt').innerHTML = "Introduzca matrícula"
+          return;
+      }
+      if(!regExp.test(matriculaUsuario)){
+        document.getElementById('prompt').innerHTML = "Formato Matrícula Inválido: Introducir 4 números seguidos por 3 letras";
+    }
       if(matricula.matricula === matriculaUsuario && matricula.multas === 0){
-        console.log('NO TIENE MULTAS -> MOSTRAR MENSAJE')
-        alert('NO TIENE MULTAS')
         document.getElementById('prompt').innerHTML = 'No tiene multas'
       }
       if(matricula.matricula === matriculaUsuario){
@@ -71,24 +70,6 @@ const validarFormulario = () => {
         document.getElementById('prompt').innerHTML = 'La matrícula no existe'
     }
 }
-
-// function checkMatricula(){
-//     if(!matriculaCoche){
-//         console.log('FORMATO ERRONEO -> MOSTRAR MENSAJE')
-//     }
-   
-//     matriculas.forEach((matricula)=>{
-//       if(matricula.matricula === matriculaUsuario && matricula.multas > 0){
-//         console.log('TIENE MULTAS -> PINTAR EN TABLA')
-//       }
-//       if(matricula.matricula === matriculaUsuario && matricula.multas === 0){
-//         console.log('NO TIENE MULTAS -> MOSTRAR MENSAJE')
-//       }
-//       if(matricula.matricula !== matriculaUsuario){
-//         console.log('NO EXISTE -> MOSTRAR MENSAJE')
-//       }
-//     })
-//   }
 
 // const pintarTablas = () => {
 //     const tabla = document.querySelector('#boxTabla');

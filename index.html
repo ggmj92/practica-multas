@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <header>Práctica Multas (Asincronía)</header>
+    <header><h1>Práctica Multas (Asincronía)</h1></header>
 
     <main>
         <div class="prompt" id="prompt">
@@ -16,8 +16,8 @@
         </div>
         <section id="formulario" class="formulario">
             
-            <form action="" method="get" name="formulario" id="form">
-                <label for="matricula">Introduzca la matrícula:</label>
+            <form action="" method="get" name="formulario" id="form" 
+                label for="matricula">Introduzca la matrícula: 
                 <input type="text" name="matricula" id="matricula">
                 <input type="submit" name="submit" id="submit" value="comprobar">
             </form>
@@ -27,15 +27,17 @@
         <section id="tabla" class="tabla">
             <table id="boxTabla">
                 <thead>
-                    <tr id="cabezaTabla">
-                        <th>Propietario</th>
+                    <tr id="cabezaTabla" class="cabezaTabla">
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Marca</th>
                         <th>Modelo</th>
                         <th>Matrícula</th>
                         <th>Multas</th>
                     </tr>
                 </thead>
                 
-                <tbody id="bodyTabla">
+                <tbody id="bodyTabla" class="tablaDibujada">
                 </tbody>
             </table>
         </section>
