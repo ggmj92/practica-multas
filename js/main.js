@@ -13,7 +13,7 @@ const data = [
     {nombre: "Claudia", appellido: "Álvarez", marca: "Citröen", modelo: "C3", matricula: "1147DDS", multas: 2},
     {nombre: "Cristian", appellido: "Muñoz", marca: "Suzuki", modelo: "Swift", matricula: "9098ESW", multas: 4},
     {nombre: "Elena", appellido: "Gómez", marca: "Subaru", modelo: "Impreza", matricula: "4342GAB", multas: 2},
-    
+
 ];
 
 form.addEventListener('submit', (ev) => {
@@ -22,7 +22,6 @@ form.addEventListener('submit', (ev) => {
    // pintarTablas();
 
 });
-
 
 const regExp = /^\d{4}[a-zA-Z]{3}$/;
 const text = "1234abc";
@@ -34,9 +33,6 @@ if (regExp.test(text)) {
 }
 
 //Array de objetos
-
-
-
 
 const validarFormulario = () => {
     const matriculaUsuario = document.querySelector("#matricula").value;
@@ -51,24 +47,28 @@ const validarFormulario = () => {
         alert('MATRICULA REQUERIDA')
         return;
     }
+    
     let existe = false;
     matriculas.forEach((matricula)=>{
       if(matricula.matricula === matriculaUsuario && matricula.multas > 0){
-        console.log('TIENE MULTAS -> PINTAR EN TABLA')
-        alert('TIENE MULTAS')
-        document.getElementById('bodyTabla').innerHTML += `<tr><td>${matricula.nombre}</td><td>${matricula.modelo}</td><td>${matricula.matricula}</td><td>${matricula.multas}</td></tr>`
+        document.getElementById('bodyTabla').innerHTML += 
+        `<tr><td>${matricula.nombre}</td>
+        <td>${matricula.modelo}</td>
+        <td>${matricula.matricula}</td>
+        <td>${matricula.multas}</td></tr>`
+        document.getElementById('prompt').innerHTML = 'Tiene multas'
       }
       if(matricula.matricula === matriculaUsuario && matricula.multas === 0){
         console.log('NO TIENE MULTAS -> MOSTRAR MENSAJE')
         alert('NO TIENE MULTAS')
+        document.getElementById('prompt').innerHTML = 'No tiene multas'
       }
       if(matricula.matricula === matriculaUsuario){
-        console.log('NO EXISTE -> MOSTRAR MENSAJE')
         existe = true;
       }
     })
     if(!existe){
-        alert('NO EXISTE LA MATRICULA')
+        document.getElementById('prompt').innerHTML = 'La matrícula no existe'
     }
 }
 
@@ -89,35 +89,35 @@ const validarFormulario = () => {
 //       }
 //     })
 //   }
-  
 
-const pintarTablas = () => {
-    const tabla = document.querySelector('#boxTabla');
-    const cabezaTabla = document.querySelector('#cabezaTabla');
-    const bodyTabla = document.querySelector("#bodyTabla")
-    bodyTabla.innerHTML = "";
-    data.forEach((item, index) => {
+// const pintarTablas = () => {
+//     const tabla = document.querySelector('#boxTabla');
+//     const cabezaTabla = document.querySelector('#cabezaTabla');
+//     const bodyTabla = document.querySelector("#bodyTabla")
+//     bodyTabla.innerHTML = "";
+//     data.forEach((item, index) => {
 
-        const lineaTabla = document.createElement('tr');
-        lineaTabla.classList.add("cabezaTabla")
+//         const lineaTabla = document.createElement('tr');
+//         lineaTabla.classList.add("cabezaTabla")
 
-        const th1 = document.createElement('td');
-        th1.textContent = item.titulo;
+//         const th1 = document.createElement('td');
+//         th1.textContent = item.titulo;
 
-        const th2 = document.createElement('td');
-        th2.textContent = item.director;
+//         const th2 = document.createElement('td');
+//         th2.textContent = item.director;
 
-        const th3 = document.createElement('td');
-        th3.textContent = item.ano;
+//         const th3 = document.createElement('td');
+//         th3.textContent = item.ano;
 
-        const th4 = document.createElement('td');
-        th4.textContent = item.genero;
+//         const th4 = document.createElement('td');
+//         th4.textContent = item.genero;
 
-        lineaTabla.append(th1, th2, th3, th4);
-        fragment.append(lineaTabla);
-    });
-    bodyTabla.append(fragment);
-};
+//         lineaTabla.append(th1, th2, th3, th4);
+//         fragment.append(lineaTabla);
+//     });
+//     bodyTabla.append(fragment);
+// };
+
 // const arrayPropietarios = [
 //     {id: 1, nombre: "Martín", appellido: "Gutierrez"},
 //     {id: 2, nombre: "Victoria", appellido: "Poblete"},
@@ -157,7 +157,6 @@ const pintarTablas = () => {
 //     {id: 9, multas: 4},
 //     {id: 10, multas: 2}
 // ]
-
 
 var jsonStr = JSON.stringify(data);
 localStorage.setItem("dataCoches", jsonStr);
