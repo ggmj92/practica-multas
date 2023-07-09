@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/main.css">
+    <title>Práctica Multas</title>
+</head>
+
+<body>
+    <header>Práctica Multas (Asincronía)</header>
+
+    <main>
+        <div class="prompt" id="prompt">
+            <p id="prompt" class="prompt">La matrícula ingresada no existe</p>
+        </div>
+        <section id="formulario" class="formulario">
+            
+            <form action="" method="get" name="formulario" id="form">
+                <label for="matricula">Introduzca la matrícula:</label>
+                <input type="text" name="matricula" id="matricula">
+                <input type="submit" name="submit" id="submit" value="comprobar">
+            </form>
+
+        </section>
+
+        <section id="tabla" class="tabla">
+            <table id="boxTabla">
+                <thead>
+                    <tr id="cabezaTabla">
+                        <th>Propietario</th>
+                        <th>Modelo</th>
+                        <th>Matrícula</th>
+                        <th>Multas</th>
+                    </tr>
+                </thead>
+                
+                <tbody id="bodyTabla">
+                </tbody>
+            </table>
+        </section>
+
+    </main>
+
+    <footer>ggmj</footer>
+
+    <script src="js/main.js"></script>
+    
+</body>
+</html>

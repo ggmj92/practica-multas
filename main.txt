@@ -1,0 +1,27 @@
+usuario entra en la página
+usuario introduce la matricula no existente con formato correcto sin multas "1234ABC"
+click al botón "comprobar"
+página muestra "matrícula no existe"
+
+usuario entra en la página
+usuario introduce la matrícula no existente con formato no existente "123AB"
+click al botón "comprobar"
+página muestra "error de formato"
+
+usuario entra en la página
+usuario introduce la matrícula existente con formato correcto con multas "4321CBA"
+click al botón "comprobar"
+página muestra "no tiene multas"
+
+usuario entra en la página 
+usuario introduce la matrícula existente con formato correcto con multas "1223ABB"
+click al botón "comprobar"
+página muestra array coches en tabla
+
+
+debería tener en el localStorage las matrículas y sus multas correspondientes
+la función "checkMatricula" se ejecutaría al darle click al botón "comprobar"
+la función "checkMatricula" debe:
+1. traer las matrículas (array matrículas)
+2. recorrer el array de la matrículas para comprobar si existe alguna matrícula que corresponda con lo introducido
+3. si existe y tiene multas se pinta en tabla
